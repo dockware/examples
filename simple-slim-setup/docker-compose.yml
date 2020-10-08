@@ -1,0 +1,86 @@
+version: '3'
+
+services:
+  shop:
+    container_name: dw__myshop_shopware
+    image: dockware/slim:latest
+    ports:
+      - "22:22"     # ssh
+      - "80:80"     # apache2
+      - "8888:8888" # watch admin
+      - "9998:9998" # watch storefront proxy (not needed if you start with "make watch-storefront")
+      - "9999:9999" # watch storefront
+    volumes:
+      - "dw__shopware_myshop_volume:/var/www/html"
+    networks:
+      - web
+    links:
+      - mailcatcher:mailserver # as we wan't to get our mails in mailcatcher we have to link it here
+    environment:
+      - XDEBUG_ENABLED=1    # as a frontendev i would set to 0 for performance
+      - FILEBEAT_ENABLED=0
+
+  # -----------------------------------------------------------------------
+  mailcatcher:
+    container_name: dw__myshop_mailcatcher
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080" # simple call it with http://localhost:1080, for shure you can choose any port you wan't on the left side of the mapping...
+    networks:
+      - web
+  # -----------------------------------------------------------------------
+
+  db:
+    container_name: dw__myshop_db
+    image: mysql:5.7 # if you wan't another mysql Version just choose another one: https://hub.docker.com/_/mysql?tab=tags
+    command: mysqld --sql_mode="ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION" --thread_stack=400000
+    volumes:
+      - "dw__db_myshop_volume:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+    networks:
+      - web
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=myshop_db
+      - TZ=Europe/Berlin
+  # -----------------------------------------------------------------------
+
+  redis:
+    container_name: dw__myshop_redis
+    image: redis:4.0
+    ports:
+      - "6379:6379"
+    networks:
+      - web
+    volumes:
+      - dw__redis__myshop_volume:/data
+  # -----------------------------------------------------------------------
+  adminer: # to open it :http://localhost:8080, server: db, user:root, pwd:root
+    image: adminer
+    container_name: dw__myshop_adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - web
+
+
+## ***********************************************************************
+##  PERSISTENT DOCKER VOLUMES
+## ***********************************************************************
+volumes:
+  dw__db_myshop_volume:
+    driver: local
+  dw__shopware_myshop_volume:
+    driver: local
+  dw__redis__myshop_volume:
+    driver: local
+
+## ***********************************************************************
+##  NETWORKS
+## ***********************************************************************
+networks:
+  web:
+    external: false
