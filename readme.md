@@ -1,9 +1,8 @@
-### Examples Repo for dockware
+### Examples for dockware
 
-In this repo we collect some interesting dockware examples how ou can handle different situation 
-easy and smooth with docker.
+In this repository we provide examples on how to handle different situations with dockware and Docker.
 
-
-Please feal free to make pull requests with your own exmaples and win one of our #Edition1 dockware tshirt's.
+Want to win a dockware #edition1 T-Shirt?
+Show us your examples by creating pull requests and help the community!
 
 Let's make development in modern environments better together!
