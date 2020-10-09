@@ -10,7 +10,7 @@ docker-compsoe up -d
 ```
 
 ## How to debug?
-Easyl type in your terminal:
+Simply type in your terminal:
 ```
 docker logs MYCONTAINERNAME
 ```
