@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  php:
+    container_name: dw__simple_php
+    image: dockware/flex:latest
+    ports:
+      - "22:22"     # ssh
+      - "80:80"     # apache2
+      - "443:443"   # apache2 ssl
+    volumes:
+      - "./src:/var/www/html"
+    environment:
+      - APACHE_DOCROOT=/var/www/html
