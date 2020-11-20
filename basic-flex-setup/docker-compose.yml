@@ -15,7 +15,7 @@ services:
     networks:
       - web
     links:
-      - mailcatcher:mailserver # as we wan't to get our mails in mailcatcher we have to link it here
+      - mailcatcher:mailserver # as we wan't to get your mails in mailcatcher we have to link it here
     environment:
       - XDEBUG_ENABLED=1    # as a frontend dev i would set to 0 for performance
       - FILEBEAT_ENABLED=0
