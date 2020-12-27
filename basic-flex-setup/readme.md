@@ -3,10 +3,10 @@
  - installed docker-compose 
 
 ## How to use it?
-Just put this docker-compose in a folder where you placed your project, 
+Just copy this `docker-compose.yml` in a folder where you placed your project, 
 open terminal and type the command:
 ```
-docker-compsoe up -d
+docker-compose up -d
 ```
 
 ## How to debug?
