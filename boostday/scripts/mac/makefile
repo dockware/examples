@@ -21,7 +21,7 @@ download: ## Downloads files from the container to your host
 # ------------------------------------------------------------------------------------------------------------
 # Updating, rebasing, starting new tasks
 
-pull: # Pulls the latest changes from the development and platform repository
+pull: ## Pulls the latest changes from the development and platform repository
 	cd ../../src && git pull
 	cd ../../src/platform && git pull
 
@@ -45,13 +45,15 @@ ssh: ## Start a new SSH connection into the container
 
 test: ## Runs all PHPUnit tests. Optionally provide a custom group with group=xy
 ifdef group
-	docker exec -it shop bash -c ' php ./vendor/bin/phpunit --configuration ./vendor/shopware/platform/phpunit.xml.dist --group $(group)'
+	docker exec -it shop bash -c 'php ./vendor/bin/phpunit --configuration ./vendor/shopware/platform/phpunit.xml.dist --group $(group)'
 else
-	docker exec -it shop bash -c ' php ./vendor/bin/phpunit --configuration ./vendor/shopware/platform/phpunit.xml.dist'
+	docker exec -it shop bash -c 'php ./vendor/bin/phpunit --configuration ./vendor/shopware/platform/phpunit.xml.dist'
+	docker exec -it shop bash -c './psh.phar administration:unit'
 endif
 
 pr: ## Runs everything to prepare the PR files and downloads it to your host
 	docker exec -it shop bash -c './psh.phar fix-cs'
+	docker exec -it shop bash -c './psh.phar static-analyze'
 	docker exec -it shop bash -c 'cd platform/src/Administration/Resources/app/administration && ./node_modules/.bin/eslint --fix --ext .js,.vue src test'
 ifndef mounted
 	docker cp shop:/var/www/html/platform/src/. ../../src/platform/src
