@@ -34,8 +34,8 @@ run: ## Upload all files to your container and install Shopware
 	@make upload -B
 	docker exec -it shop bash -c 'sudo rm -rf composer.lock'
 	docker exec -it shop bash -c './psh.phar install'
-	open http://localhost
-	open http://localhost/admin
+	sensible-browser http://localhost
+	sensible-browser http://localhost/admin
 
 # ------------------------------------------------------------------------------------------------------------
 # dev, tools and more
