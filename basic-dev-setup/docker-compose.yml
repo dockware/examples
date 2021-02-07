@@ -16,7 +16,7 @@ services:
     networks:
       - web
     environment:
-      - XDEBUG_ENABLED=0    # as Xdebug will slow your environment down, you should only enbale it if needed
+      - XDEBUG_ENABLED=0    # as Xdebug will slow your environment down, you should only enable it if needed
 
 
 ## ***********************************************************************
