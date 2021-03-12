@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  shop:
+    container_name: dw__shop
+    image: dockware/dev:latest
+    ports:
+      - "22:22"     # ssh
+      - "80:80"     # apache2
+      - "8888:8888" # watch admin
+      - "9998:9998" # watch storefront proxy (not needed if you start with "make watch-storefront")
+      - "9999:9999" # watch storefront
+    volumes:
+      - "./src:/var/www/html"
+      - "dw__shop_cache:/var/www/html/var/cache" # we use a volume for the cache dir to speed up especially for macs
+    networks:
+      - web
+    environment:
+      - XDEBUG_ENABLED=0
+
+## ***********************************************************************
+##  PERSISTENT DOCKER VOLUMES
+## ***********************************************************************
+volumes:
+  dw__shop_cache:
+    driver: local
+
+## ***********************************************************************
+##  NETWORKS
+## ***********************************************************************
+networks:
+  web:
+    external: false
