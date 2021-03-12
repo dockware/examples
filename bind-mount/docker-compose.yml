@@ -10,9 +10,8 @@ services:
       - "8888:8888" # watch admin
       - "9998:9998" # watch storefront proxy (not needed if you start with "make watch-storefront")
       - "9999:9999" # watch storefront
-    volumes:
+    volumes: ###  MAKE SURE YOU BOOT THE FIRST TIME WITHOUT THIS VOLUME, OTHERWISE IT WILL OVERRIDE THE FOLDER AND NO FILES WILL EXIST, READ THE readme.md ###
       - "./src:/var/www/html"
-      - "dw__shop_cache:/var/www/html/var/cache" # we use a volume for the cache dir to speed up especially for macs
     networks:
       - web
     environment:

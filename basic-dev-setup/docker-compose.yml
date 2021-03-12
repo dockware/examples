@@ -2,7 +2,7 @@ version: '3'
 
 services:
   shop:
-    container_name: dw__myshop_dev_shopware
+    container_name: shop
     image: dockware/dev:latest
     ports:
       - "22:22"     # ssh
@@ -10,23 +10,13 @@ services:
       - "8888:8888" # watch admin
       - "9998:9998" # watch storefront proxy (not needed if you start with "make watch-storefront")
       - "9999:9999" # watch storefront
-    volumes:
-      - "dw__shopware_myshop_volume:/var/www/html"
-      - "dw__db_myshop_volume:/var/lib/mysql"
+    #volumes:
+    #  - "./src:/var/www/html"
+    #  - "./src:/var/www/html/custom/plugins"
     networks:
       - web
     environment:
-      - XDEBUG_ENABLED=0    # as Xdebug will slow your enviromnet down, you should only enbale it if needed
-
-
-## ***********************************************************************
-##  PERSISTENT DOCKER VOLUMES
-## ***********************************************************************
-volumes:
-  dw__db_myshop_volume:
-    driver: local
-  dw__shopware_myshop_volume:
-    driver: local
+      - XDEBUG_ENABLED=0
 
 ## ***********************************************************************
 ##  NETWORKS

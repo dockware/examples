@@ -1,0 +1,56 @@
+version: "3.0"
+
+
+services:
+
+    shop:
+      container_name: shop
+      image: dockware/contribute:latest
+      ports:
+        - "80:80"
+        - "443:443"
+        - "22:22"
+        - "3306:3306"
+        - "8888:8888"
+        - "9999:9999"
+      networks:
+        - web
+      environment:
+        - PHP_VERSION=7.4
+        - XDEBUG_ENABLED=0
+    # -------------------------------------------------------------------
+    elastic:
+      container_name: elastic
+      image: elasticsearch:7.5.2
+      ports:
+        - "9200:9200"
+        - "9300:9300"
+      networks:
+        - web
+      volumes:
+        - "elastic_volume:/usr/local/var/elasticsearch/data"
+      environment:
+        - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+        - discovery.type=single-node
+    # -------------------------------------------------------------------
+    redis:
+      container_name: redis
+      image: redis:4.0
+      ports:
+          - "6379:6379"
+      networks:
+          - web
+
+## ***********************************************************************
+##  PERSISTENT DOCKER VOLUMES
+## ***********************************************************************
+volumes:
+  elastic_volume:
+      driver: local
+
+## ***********************************************************************
+##  NETWORKS
+## ***********************************************************************
+networks:
+  web:
+    external: false
