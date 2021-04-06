@@ -8,7 +8,7 @@ services:
       - "22:22"     # ssh
       - "80:80"     # apache2
       - "8888:8888" # watch admin
-      - "9998:9998" # watch storefront proxy (not needed if you start with "make watch-storefront")
+      - "9998:9998" # watch storefront proxy
       - "9999:9999" # watch storefront
     #volumes:
     #  - "./src:/var/www/html"
