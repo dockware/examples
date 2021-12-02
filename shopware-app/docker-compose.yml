@@ -1,0 +1,31 @@
+version: "3.0"
+
+services:
+
+    shopware:
+      container_name: shopware
+      image: dockware/dev:6.4.6.1
+      ports:
+        - "80:80"
+        - "3306:3306"
+      networks:
+        - web
+      volumes:
+        - "./.env:/var/www/html/.env"
+        - "./src/shopware/custom/apps/DockwareSampleApp:/var/www/html/custom/apps/DockwareSampleApp"
+
+    server:
+      container_name: server
+      image: dockware/flex:latest
+      ports:
+        - "1000:80"
+      networks:
+        - web
+      volumes:
+        - "./src/service:/var/www/html"
+      links:
+        - shopware:dockware.app.dev
+
+networks:
+  web:
+    external: false

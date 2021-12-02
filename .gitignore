@@ -1,3 +1,8 @@
 .idea/*
 
 .DS_Store
+/shopware-app/.idea
+/shopware-app/src/service/logs
+/shopware-app/src/service/Storage
+/shopware-app/src/service/_logs
+/shopware-app/src/service/_storage

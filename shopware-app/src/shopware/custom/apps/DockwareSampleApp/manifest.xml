@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/Framework/App/Manifest/Schema/manifest-1.0.xsd">
+    <meta>
+        <name>DockwareProductReviews</name>
+        <label>Product Review Integration (Sample App)</label>
+        <description>A sample app by dockware</description>
+        <author>dasistweb GmbH</author>
+        <copyright>(c) by dasistweb GmbH</copyright>
+        <version>1.0.0</version>
+        <icon>Resources/config/plugin.png</icon>
+        <license>MIT</license>
+
+    </meta>
+
+    <setup>
+        <secret>dockware-dev</secret>
+        <registrationUrl>http://server/app/setup/registration.php</registrationUrl>
+    </setup>
+
+    <permissions>
+        <read>order</read>
+        <read>product_review</read>
+        <create>product_review</create>
+    </permissions>
+
+    <webhooks>
+        <webhook name="order-placed" event="checkout.order.placed" url="http://server/app/event/order-placed.php"/>
+    </webhooks>
+
+</manifest>
