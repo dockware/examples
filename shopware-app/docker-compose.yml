@@ -4,7 +4,7 @@ services:
 
     shopware:
       container_name: shopware
-      image: dockware/dev:6.4.6.1
+      image: dockware/dev:6.4.7.0
       ports:
         - "80:80"
         - "3306:3306"
@@ -12,7 +12,7 @@ services:
         - web
       volumes:
         - "./.env:/var/www/html/.env"
-        - "./src/shopware/custom/apps/DockwareSampleApp:/var/www/html/custom/apps/DockwareSampleApp"
+        - "./src/shopware/custom/apps/DockwareProductReviews:/var/www/html/custom/apps/DockwareProductReviews"
 
     server:
       container_name: server
