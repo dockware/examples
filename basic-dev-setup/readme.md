@@ -7,7 +7,7 @@ Please use the matching makefiles for your operating system and continue with th
 
 > Please note, this setup uses an isolated image without bind mounting.
 > This SFTP approach is an option that should work in all scenarios.
-> You can of course change that to be bind mounting if its still fast and good for you.
+> You can of course change that to be bind mounting if it's still fast and good for you.
 > In that case, some steps might not be necessary.
 
 
@@ -25,7 +25,7 @@ docker-compose up -d
 
 > SFTP Version
 
-Let's get that dockware source code on your host to work with it and have some smooth auto completion in your IDE.
+Let's get that dockware source code on your host to work with it and have some smooth auto-completion in your IDE.
 
 This command will download the whole source code into a separate "src" on your host.
 You can then just open that one with your preferred IDE.
