@@ -20,5 +20,5 @@ docker logs dw__myshop_shopware
 ```
 and you will see the output of the Shopware Container ...
 
-## How to use it for different Projets?
+## How to use it for different Projects?
 That's quit easy, just replace all "myshop" names with your project Shortcode or name, and you will have different volumes etc. for each project, that you don't get in trouble with db Names etc.

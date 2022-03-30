@@ -25,7 +25,7 @@ docker-compose up -d
 
 > SFTP Version
 
-Let's get that dockware source code on your host to work with it and have some smooth auto completion in your IDE.
+Let's get that dockware source code on your host to work with it and have some smooth auto-completion in your IDE.
 
 This command will download the whole source code into a separate "src" on your host.
 You can then just open that one with your preferred IDE.
@@ -70,7 +70,7 @@ Afterwards please checkout the `master` of the Boostday repository.
 
 ## 4. Pull Repositories
 
-Now that our GIT repositories are ready, we want to ensure that we are up to date. 
+Now that our GIT repositories are ready, we want to ensure that we are up-to-date. 
 This is also recommended before starting new tasks.
 
 Either use your GIT client or use the prepared make command to update both 
