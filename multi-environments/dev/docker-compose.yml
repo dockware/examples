@@ -1,0 +1,33 @@
+version: "3.8"
+
+
+services:
+
+  proxy:
+    container_name: proxy
+    image: dockware/proxy:latest
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8888:8888"
+      - "9999:9999"
+      - "9998:9998"
+    depends_on:
+      - shop1
+      - shop2
+    volumes:
+      - "./proxy/shop-1.conf:/etc/nginx/conf.d/shop-1.conf"
+      - "./proxy/shop-2.conf:/etc/nginx/conf.d/shop-2.conf"
+  # -----------------------------------------------------------------------
+  shop1:
+    image: dockware/dev:6.4.11.1
+    container_name: shop1
+    ports:
+      - "2001:22"
+      - "3001:3306"
+  shop2:
+    image: dockware/dev:6.4.11.1
+    container_name: shop2
+    ports:
+      - "2002:22"
+      - "3002:3306"
