@@ -19,6 +19,7 @@
 
     <permissions>
         <read>order</read>
+        <read>product</read>
         <read>product_review</read>
         <create>product_review</create>
     </permissions>

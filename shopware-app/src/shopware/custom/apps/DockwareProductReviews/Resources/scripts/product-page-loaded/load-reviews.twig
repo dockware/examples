@@ -1,0 +1,18 @@
+{% set page = hook.page %}
+{# @var page \Shopware\Storefront\Page\Product\ProductPage #}
+
+
+{% set criteria = {
+    'filter': [
+        { 'field': 'product.id', 'type': 'equals', 'value': page.product.id }
+    ]
+} %}
+
+{% set reviews = services.repository.search('product_review', criteria) %}
+
+
+{% set reviewData = {
+    'count': reviews.count
+} %}
+
+{% do page.addArrayExtension('dockwareProductReviews', reviewData) %}

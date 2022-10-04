@@ -4,10 +4,11 @@ services:
 
     shopware:
       container_name: shopware
-      image: dockware/dev:6.4.7.0
+      image: dockware/dev:6.4.15.1
       ports:
         - "80:80"
         - "3306:3306"
+        - "22:22"
       networks:
         - web
       volumes:
