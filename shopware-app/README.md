@@ -15,7 +15,6 @@ The backend service has been written in PHP from scratch. So no framework or any
 It's definitely no perfect integration, and no one of us thinks it is ;)
 So please keep this in mind.
 
-
 ## Installation
 
 Just start the Docker containers.
@@ -27,7 +26,6 @@ docker-compose up -d
 After the containers are started, go to `http://localhost/admin` and install the App like any other plugin. Don't forget to activate it afterwards!
 
 That's it!
-
 
 ## Using the App
 
@@ -43,6 +41,32 @@ Just select a product, write a review and submit the form.
 
 If everything worked, the review should now be visible on the product detail page in Shopware.
 
+## Features
+
+### Hooks
+
+When you place an order, a hook is automatically called to our backend service.
+This contains the order and our backend service processes it for you.
+
+### App Scripts - Storefront
+
+The detail page of a PDP has been modified to show the "Dockware Product Review" count in the buy-box.
+This is coming from an App Script.
+
+### App Scripts - Custom Endpoint
+
+We have created a custom Storefront route that returns the reviews of a product using JSON.
+
+Just use this URL and provide your product number
+
+```bash
+http://localhost/storefront/script/dockware-reviews?productNumber=xyz 
+```
+
+### Admin SDK
+
+The Admin SDK has been configured automatically for you.
+The backend service contains the URL http://localhost:1000/app/admin that contains the whole server side administration extension.
 
 ## Architecture
 
@@ -58,19 +82,22 @@ Again, please keep in mind, this is by far no perfect implementation.
 It should only demonstrate how it is done.
 
 #### Data Storage
+
 Instead of a MySQL database, a simple JSON file storage has been used.
 So all shops as well as received orders are saved in the "_storage" folder and can easily be reviewed.
 
 #### Logs
+
 All interesting requests to our app system are automatically logged.
 So here you can see what Shopware sends to our backend service, and what is happening under the hood.
 
 #### Product Review
+
 The frontend of our application can be opened with `http://localhost:1000`.
 It allows you to search for orders, and write reviews for products of those orders.
 
-
 ### Connection between containers
+
 To allow a real plug and play experience for you, we've adjusted 2 simple things.
 
 Our Shopware needs to be able to talk to our backend service, and also a communication from that
@@ -97,7 +124,6 @@ This is done by using a `link` with an `alias` in the configuration of our backe
 We just use our non-existing domain from the `.env` file and use it as an alias for the Docker container of Shopware.
 
 And now, your backend service can automatically reach the dynamically registered URL of our Shopware App.
-
 
 ## Troubleshooting
 
