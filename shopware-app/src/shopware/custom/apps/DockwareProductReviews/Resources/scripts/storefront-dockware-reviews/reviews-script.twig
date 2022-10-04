@@ -1,0 +1,18 @@
+{# ROUTE: http://localhost/storefront/script/dockware-reviews?productNumber=xyz #}
+
+{% block response %}
+
+    {% set productNumber = hook.query.productNumber %}
+
+    {% set criteria = {
+        'filter': [
+            { 'field': 'product.productNumber', 'type': 'equals', 'value': productNumber }
+        ]
+    } %}
+
+    {% set reviews = services.repository.search('product_review', criteria) %}
+    
+    {% set response = services.response.json(reviews.jsonSerialize) %}
+    {% do hook.setResponse(response) %}
+
+{% endblock %}
