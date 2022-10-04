@@ -21,4 +21,14 @@ class SignatureValidator
         }
     }
 
+    /**
+     * @param array $body
+     * @param string $shopSecret
+     * @return string
+     */
+    public function signBody(array $body, string $shopSecret)
+    {
+        return \hash_hmac('sha256', json_encode($body), $shopSecret);
+    }
+
 }

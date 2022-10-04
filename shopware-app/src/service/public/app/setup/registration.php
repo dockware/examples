@@ -52,7 +52,7 @@ try {
 
     Logger::logData('response', $responseData);
 
-    Response::success($responseData);
+    die(json_encode($responseData));
 
 } catch (Throwable $ex) {
 

@@ -5,9 +5,16 @@ class Response
 
     /**
      * @param array $data
+     * @param Shop $shop
+     * @return void
      */
-    public static function success(array $data)
+    public static function success(array $data, Shop $shop): void
     {
+        $validatorSignature = new SignatureValidator();
+        $signature = $validatorSignature->signBody($data, $shop->getShopSecret());
+
+        header('shopware-app-signature: ' . $signature);
+
         die(json_encode($data));
     }
 

@@ -32,6 +32,7 @@ try {
 
 
     $order = new Order(
+        $orderData['id'],
         $shopId,
         $orderData['salesChannelId'],
         $orderData['orderDateTime'],
@@ -63,7 +64,7 @@ try {
     );
 
 
-    Response::success([]);
+    Response::success([], $shop);
 
 } catch (Throwable $ex) {
 

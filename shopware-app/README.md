@@ -68,6 +68,9 @@ http://localhost/storefront/script/dockware-reviews?productNumber=xyz
 The Admin SDK has been configured automatically for you.
 The backend service contains the URL http://localhost:1000/app/admin that contains the whole server side administration extension.
 
+In addition to this, we've created an action button in the details of an order.
+This action button "Add Review" acts as deep link button that automatically redirects you to the page to submit a new review for this order.
+
 ## Architecture
 
 ### Shopware App

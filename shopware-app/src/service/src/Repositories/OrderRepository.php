@@ -13,6 +13,7 @@ class OrderRepository
     public function saveOrder(Order $order)
     {
         $data = [
+            'swId' => $order->getSwId(),
             'shopId' => $order->getShopId(),
             'salesChannelId' => $order->getSaleschannelId(),
             'date' => $order->getDate(),
@@ -76,6 +77,7 @@ class OrderRepository
         $data = json_decode($content, true);
 
         $order = new Order(
+            $data['swId'],
             $data['shopId'],
             $data['salesChannelId'],
             $data['date'],
@@ -94,6 +96,22 @@ class OrderRepository
         }
 
         return $order;
+    }
+
+    /**
+     * @param string $swId
+     * @return Order|null
+     */
+    public function getOrderBySwId(string $swId): Order
+    {
+        $orders = $this->getAllOrders();
+
+        /** @var Order $order */
+        foreach ($orders as $order) {
+            if ($order->getSwId() === $swId) {
+                return $order;
+            }
+        }
     }
 
 }

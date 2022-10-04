@@ -7,6 +7,11 @@ class Order
     /**
      * @var string
      */
+    private $swId;
+
+    /**
+     * @var string
+     */
     private $shopId;
 
     /**
@@ -31,18 +36,29 @@ class Order
 
 
     /**
+     * @param string $swId
      * @param string $shopId
+     * @param string $saleschannelId
      * @param string $date
      * @param string $number
      */
-    public function __construct(string $shopId, string $saleschannelId, string $date, string $number)
+    public function __construct(string $swId, string $shopId, string $saleschannelId, string $date, string $number)
     {
+        $this->swId = $swId;
         $this->shopId = $shopId;
         $this->date = $date;
         $this->number = $number;
         $this->saleschannelId = $saleschannelId;
 
         $this->lineItems = [];
+    }
+
+    /**
+     * @return string
+     */
+    public function getSwId(): string
+    {
+        return $this->swId;
     }
 
     /**
