@@ -6,7 +6,7 @@
         <description>A sample app by dockware</description>
         <author>dasistweb GmbH</author>
         <copyright>(c) by dasistweb GmbH</copyright>
-        <version>1.0.0</version>
+        <version>1.2.0</version>
         <icon>Resources/config/plugin.png</icon>
         <license>MIT</license>
 
@@ -23,6 +23,10 @@
         <read>product_review</read>
         <create>product_review</create>
     </permissions>
+
+    <admin>
+        <base-app-url>http://localhost:1000/app/admin</base-app-url>
+    </admin>
 
     <webhooks>
         <webhook name="order-placed" event="checkout.order.placed" url="http://server/app/event/order-placed.php"/>
