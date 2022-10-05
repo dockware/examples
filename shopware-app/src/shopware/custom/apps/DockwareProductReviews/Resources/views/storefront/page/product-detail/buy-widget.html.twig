@@ -2,8 +2,10 @@
 
 {% block page_product_detail_ordernumber_container %}
     {{ parent() }}
-    <p style="color: #d70bd7;">
-        <strong>Dockware App Product Reviews:</strong>
-        {{ page.getExtension('dockwareProductReviews').count }}
-    </p>
+    {% if config('DockwareProductReviews.config.pdpReviewCountEnabled') %}
+        <p style="color: #d70bd7;">
+            <strong>Dockware App Product Reviews:</strong>
+            {{ page.getExtension('dockwareProductReviews').count }}
+        </p>
+    {% endif %}
 {% endblock %}

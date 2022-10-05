@@ -63,7 +63,11 @@ Just use this URL and provide your product number
 http://localhost/storefront/script/dockware-reviews?productNumber=xyz 
 ```
 
-### Admin SDK
+### App Configuration
+
+You can open the configuration in the Admin and turn off the count display on the PDP page.
+
+### Admin Extension SDK
 
 The Admin SDK has been configured automatically for you.
 The backend service contains the URL http://localhost:1000/app/admin that contains the whole server side administration extension.
