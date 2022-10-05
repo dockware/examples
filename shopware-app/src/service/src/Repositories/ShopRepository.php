@@ -44,19 +44,13 @@ class ShopRepository
 
         $shopData = $allShops[$shopId];
 
-        return new Shop(
-            $shopData['shopId'],
-            $shopData['shopUrl'],
-            $shopData['shopSecret'],
-            $shopData['apiKey'],
-            $shopData['secretKey']
-        );
+        return $this->toEntity($shopData);
     }
 
     /**
      * @return array|void
      */
-    private function getAllShops()
+    public function getAllShops()
     {
         if (!file_exists(self::STORAGE_FILENAME_SHOPS)) {
             return [];
@@ -65,6 +59,21 @@ class ShopRepository
         $content = file_get_contents(self::STORAGE_FILENAME_SHOPS);
 
         return json_decode($content, true);
+    }
+
+    /**
+     * @param array $shopData
+     * @return Shop
+     */
+    public function toEntity(array $shopData): Shop
+    {
+        return new  Shop(
+            $shopData['shopId'],
+            $shopData['shopUrl'],
+            $shopData['shopSecret'],
+            $shopData['apiKey'],
+            $shopData['secretKey']
+        );
     }
 
 }

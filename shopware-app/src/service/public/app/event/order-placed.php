@@ -64,6 +64,21 @@ try {
     );
 
 
+    $client = new HttpClient(
+        $shop->getShopUrl() . '/api',
+        $shop->getApiKey(),
+        $shop->getApiSecret()
+    );
+
+    $postData = [
+        'customFields' => [
+            'dockware_product_reviews_exported_date' => date('Y-m-d'),
+        ]
+    ];
+
+    $response = $client->patch('order/' . $order->getSwId(), $postData);
+
+
     Response::success([], $shop);
 
 } catch (Throwable $ex) {

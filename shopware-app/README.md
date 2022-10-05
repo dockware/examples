@@ -41,12 +41,20 @@ Just select a product, write a review and submit the form.
 
 If everything worked, the review should now be visible on the product detail page in Shopware.
 
-## Features
+## Technical Features
 
 ### Hooks
 
 When you place an order, a hook is automatically called to our backend service.
 This contains the order and our backend service processes it for you.
+
+### Custom Fields
+
+The app creates a custom field set in the order entity.
+This contains an "exported_date" string.
+
+When an order is placed, the external backend service will automatically update that field in Shopware after
+everything was processed correctly.
 
 ### App Scripts - Storefront
 
