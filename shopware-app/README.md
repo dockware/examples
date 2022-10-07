@@ -58,7 +58,7 @@ everything was processed correctly.
 
 ### App Scripts - Storefront
 
-The detail page of a PDP has been modified to show the "Dockware Product Review" count in the buy-box.
+The PDP has been modified to show the "Dockware Product Review" count in the buy-box.
 This is coming from an App Script.
 
 ### App Scripts - Custom Endpoint
